@@ -25,3 +25,17 @@ const makeSandwich2 = ingredient1 => ingredient2 => ingredient3 =>
 const sandwich2 = makeSandwich2("bread")("spinach")("tomato")
 // console.log(sandwich2)
 
+/**
+ * *Another example
+ */
+
+const add = (a, b) => a + b
+
+/** 
+ * * Curried add
+ */
+
+const curriedAdd = a => b => a + b
+
+const addTwenty = curriedAdd(20)
+console.log(addTwenty(4))
