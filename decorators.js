@@ -56,8 +56,38 @@ const requireIntegers = (fn) => {
 
 rectangleArea = countArgs(rectangleArea)
 rectangleArea = requireIntegers(rectangleArea)
-console.log(rectangleArea(12, 'hello'))
+
+// console.log(rectangleArea(12, 'hello'))
 // console.log(rectangleArea(12, 10, 15))
 // console.log(rectangleArea(12, 13))
 
+/**
+ * * Decorate an async API call function
+ */
 
+let getData = async(url) => {
+  try {
+    const res = await fetch(url)
+    const data = await res.json()
+    return(data)
+  }catch (error) {
+    console.error(error)
+  }
+}
+
+const dataResponseTime = (fn) => {
+  return async (url) => {
+    console.time('fn')
+    const data = await fn(url)
+    console.timeEnd('fn')
+    return data
+  }
+}
+
+const testFunction = async () => {
+  getData = dataResponseTime(getData)
+  const data = await getData("https://jsonplaceholder.typicode.com/posts")
+  console.log(data)
+}
+
+testFunction()
