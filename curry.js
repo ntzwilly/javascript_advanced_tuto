@@ -11,8 +11,17 @@ const makeSandwich = (ingredient1) => {
   }
 }
 
-const mySandwich = makeSandwich("bread")("meat")("cheese")
-console.log(mySandwich)
+const sandwich1 = makeSandwich("bread")("meat")("cheese")
+// console.log(sandwich1)
+
+/**
+ * * Refactor:
+ */
+
+const makeSandwich2 = ingredient1 => ingredient2 => ingredient3 => 
+     `${ingredient1}, ${ingredient2}, ${ingredient3}`
 
 
+const sandwich2 = makeSandwich2("bread")("spinach")("tomato")
+// console.log(sandwich2)
 
