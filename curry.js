@@ -73,7 +73,24 @@ let completeOrder = (...args) => {
 }
 
 completeOrder = (processOrder(completeOrder))
-console.log(completeOrder)
+// console.log(completeOrder)
 completeOrder = (addCustomer(completeOrder))
-completeOrder("100")
-completeOrder("101")
+// completeOrder("100")
+// completeOrder("101")
+
+/**
+ * * Requires a function with a fixed number of parameters
+ */
+
+const curry = (fn) => {
+  return curried = (...args) => {
+    if(args.length !== fn.length) {
+      return curried.bind(null, ...args)
+    }
+    return fn(...args)
+  }
+}
+
+const total = (x, y, z) => x + y + z
+const curriedTotal = curry(total)
+console.log(curriedTotal(10)(20)(30))
