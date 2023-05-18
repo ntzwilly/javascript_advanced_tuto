@@ -38,4 +38,42 @@ const add = (a, b) => a + b
 const curriedAdd = a => b => a + b
 
 const addTwenty = curriedAdd(20)
-console.log(addTwenty(4))
+// console.log(addTwenty(4))
+
+const updateElemText = id => content => {
+  document.querySelector(`#${id}`).textContent = content
+}
+
+const updateHeaderText = updateElemText('header')
+// updateHeaderText("Hello, BB")
+
+const validateValue = value => number => number <= value && number > 0 ? "Valid" : "invalid"
+
+
+// let x = validateValue(12)
+// console.log(x(0))
+// console.log(x(7))
+
+/**
+ * * Function composition example
+ */
+
+const addCustomer = fn => (...params) => {
+  console.log('saving customer info')
+  return fn(...params)
+}
+
+const processOrder = fn => (...params) => {
+  console.log(`processing order #${params[0]}`)
+  return fn(...params)
+}
+
+let completeOrder = (...args) => {
+  console.log(`Order #${[...args].toString()} completed`)
+}
+
+completeOrder = (processOrder(completeOrder))
+console.log(completeOrder)
+completeOrder = (addCustomer(completeOrder))
+completeOrder("100")
+completeOrder("101")
