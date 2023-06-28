@@ -18,7 +18,7 @@ const memorizedMultiplyByTen = () => {
       return cache[num]
     }
     const result = num * 10;
-    cache[num] = result;
+    cache[num] = result;hotwire
     return result;
   }
 }
